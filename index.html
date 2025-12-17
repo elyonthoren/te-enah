@@ -2,38 +2,203 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Te·enah</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official website of Te·enah" />
+  <title>Te·enah</title>
+  <meta name="description" content="Official website of Te·enah — Gratitude • Abundance • Remembrance" />
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0e0e0e;
-      color: #f5f5f5;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+    :root{
+      --bg:#070707;
+      --card:#0f0f0f;
+      --text:#f4f4f4;
+      --muted:#b7b7b7;
+      --line:rgba(255,255,255,.12);
     }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.15em;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% 30%, rgba(255,255,255,.08), transparent 60%),
+                  linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      color:var(--text);
+      min-height:100vh;
     }
-    p {
-      font-size: 1.1rem;
-      opacity: 0.75;
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 0 18px;border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .dotlogo{
+      width:34px;height:34px;border-radius:10px;
+      border:1px solid var(--line);
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.04);
+      font-weight:700;
+      letter-spacing:.12em;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:14px;
+      font-size:14px;
+    }
+    nav a:hover{color:var(--text)}
+    .hero{
+      padding:56px 0 26px;
+      text-align:center;
+    }
+    h1{
+      font-size:56px;
+      margin:12px 0 10px;
+      letter-spacing:.18em;
+      font-weight:700;
+    }
+    .tagline{
+      color:var(--muted);
+      font-size:16px;
+      letter-spacing:.12em;
+    }
+    .cta{
+      margin-top:26px;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      min-width:170px;
+      display:inline-flex;
+      justify-content:center;
+      gap:8px;
+      align-items:center;
+    }
+    .btn:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{
+      background:rgba(255,255,255,.14);
+      border-color:rgba(255,255,255,.25);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:26px;
+    }
+    @media(min-width:860px){
+      .grid{grid-template-columns:1.2fr .8fr}
+    }
+    .card{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+    }
+    .card h2{margin:0 0 10px;font-size:18px;letter-spacing:.06em}
+    .card p{margin:0;color:var(--muted);line-height:1.55}
+    .list{margin-top:10px;color:var(--muted);line-height:1.7}
+    .line{height:1px;background:var(--line);margin:18px 0}
+    footer{
+      margin-top:32px;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    code{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:2px 6px;
+      border-radius:8px;
+      color:var(--text);
     }
   </style>
 </head>
+
 <body>
-  <div>
-    <h1>Te·enah</h1>
-    <p>Gratitude • Abundance • Remembrance</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="dotlogo">T</div>
+        <div>
+          <div style="font-weight:700;letter-spacing:.10em">Te·enah</div>
+          <div style="font-size:12px;color:var(--muted);letter-spacing:.08em">Gratitude • Abundance • Remembrance</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#token">Token</a>
+        <a href="#get">Get Te·enah</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="tagline">A sacred symbol of gratitude and abundance</div>
+      <h1>Te·enah</h1>
+      <div class="tagline">Gratitude • Abundance • Remembrance</div>
+
+      <div class="cta">
+        <a class="btn primary" href="#get">Get Te·enah</a>
+        <a class="btn" href="#token">View Token Details</a>
+        <a class="btn" href="#about">Read the Vision</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card" id="about">
+        <h2>What is Te·enah?</h2>
+        <p>
+          Te·enah is a symbol and a project built around gratitude, abundance, and remembrance.
+          The mission is simple: help people share stories of gratitude—and turn those stories into a movement.
+        </p>
+        <div class="line"></div>
+        <div class="list">
+          • Meaning: Gratitude → Abundance<br/>
+          • Theme: “By their fruits you will know them.”<br/>
+          • Purpose: Build a community site where people can give and receive Te·enah as a gift.
+        </div>
+      </div>
+
+      <div class="card" id="token">
+        <h2>Token info</h2>
+        <p>Replace the placeholders below once you’re ready to publish your official on-chain details.</p>
+        <div class="line"></div>
+        <div class="list">
+          • Network: <code>BNB Smart Chain</code><br/>
+          • Symbol: <code>T</code><br/>
+          • Total Supply: <code>33,000,000</code><br/>
+          • Contract: <code>PASTE_CONTRACT_ADDRESS_HERE</code><br/>
+          • Explorer: <code>PASTE_BSCSCAN_LINK_HERE</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="get" style="margin-top:14px">
+      <h2>Get Te·enah</h2>
+      <p>
+        Add your official links here (Buy / Receive / Swap / Contact). For now, we can keep it simple.
+      </p>
+      <div class="line"></div>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn primary" href="#">Buy Te·enah (link)</a>
+        <a class="btn" href="#">Receive Te·enah (link)</a>
+        <a class="btn" href="#">Contact (email/link)</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Te·enah. All rights reserved.
+    </footer>
   </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
