@@ -2,135 +2,319 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Te·enah</title>
-  <meta name="description" content="Official website of Te·enah — Gratitude • Abundance • Remembrance" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official website of Te·enah" />
 
   <style>
     :root{
-      --bg:#070707;
-      --card:#0f0f0f;
-      --text:#f4f4f4;
-      --muted:#b7b7b7;
-      --line:rgba(255,255,255,.12);
+      --bg: #0a0a0a;
+      --panel: rgba(18,18,18,0.72);
+      --panel2: rgba(18,18,18,0.58);
+      --text: #f5f5f5;
+      --muted: rgba(245,245,245,0.72);
+      --line: rgba(245,245,245,0.12);
+      --glow: rgba(255,255,255,0.08);
+      --accent: rgba(245,245,245,0.92);
+      --danger: #ff3b3b;
+      --radius: 22px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing: border-box; }
+    html, body{ height:100%; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 50% 30%, rgba(255,255,255,.08), transparent 60%),
-                  linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
-      color:var(--text);
-      min-height:100vh;
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      overflow-x: hidden;
     }
-    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 60px}
+
+    /* --- Fig orchard vibe (no external images) --- */
+    .orchard{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(1200px 600px at 50% 18%, rgba(255,255,255,0.12), transparent 58%),
+        radial-gradient(900px 520px at 22% 36%, rgba(60,120,60,0.22), transparent 62%),
+        radial-gradient(900px 520px at 78% 36%, rgba(60,120,60,0.20), transparent 62%),
+        radial-gradient(800px 520px at 50% 78%, rgba(120,60,60,0.16), transparent 60%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 40%, #070707 100%);
+      filter: saturate(105%);
+    }
+    .orchard::before{
+      content:"";
+      position:absolute;
+      inset:-40px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(70,130,70,0.13) 0 2px, transparent 3px),
+        radial-gradient(circle at 30% 35%, rgba(70,130,70,0.11) 0 2px, transparent 3px),
+        radial-gradient(circle at 55% 18%, rgba(70,130,70,0.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 28%, rgba(70,130,70,0.12) 0 2px, transparent 3px),
+        radial-gradient(circle at 18% 66%, rgba(140,80,80,0.10) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 72%, rgba(140,80,80,0.10) 0 2px, transparent 3px);
+      background-size: 220px 220px;
+      opacity: 0.7;
+      filter: blur(0.4px);
+      mask-image: radial-gradient(circle at 50% 45%, rgba(0,0,0,0.85), transparent 70%);
+    }
+    .orchard::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(circle at 50% 50%, transparent 0 35%, rgba(0,0,0,0.55) 75%);
+      z-index:-1;
+    }
+
+    .wrap{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 26px 20px 70px;
+    }
+
     header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:10px 0 18px;border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 14px 6px 18px;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-    .brand{display:flex;gap:10px;align-items:center}
-    .dotlogo{
-      width:34px;height:34px;border-radius:10px;
-      border:1px solid var(--line);
-      display:grid;place-items:center;
-      background:rgba(255,255,255,.04);
-      font-weight:700;
-      letter-spacing:.12em;
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 250px;
     }
+    .logo{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      line-height: 1.1;
+    }
+    .brandText strong{
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+    .brandText span{
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
     nav a{
-      color:var(--muted);
+      color: rgba(245,245,245,0.88);
       text-decoration:none;
-      margin-left:14px;
-      font-size:14px;
+      margin-left: 18px;
+      font-size: 15px;
+      letter-spacing: 0.04em;
     }
-    nav a:hover{color:var(--text)}
+    nav a:hover{ text-decoration: underline; }
+
     .hero{
-      padding:56px 0 26px;
+      padding: 48px 6px 28px;
       text-align:center;
-    }
-    h1{
-      font-size:56px;
-      margin:12px 0 10px;
-      letter-spacing:.18em;
-      font-weight:700;
     }
     .tagline{
-      color:var(--muted);
-      font-size:16px;
-      letter-spacing:.12em;
+      color: rgba(245,245,245,0.72);
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      font-size: 12px;
     }
-    .cta{
-      margin-top:26px;
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(44px, 8vw, 84px);
+      letter-spacing: 0.14em;
+      font-weight: 850;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    .subline{
+      margin-top: 8px;
+      color: rgba(245,245,245,0.70);
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .ctaRow{
       display:flex;
-      gap:12px;
       justify-content:center;
-      flex-wrap:wrap;
+      gap: 14px;
+      margin: 26px 0 26px;
+      flex-wrap: wrap;
     }
     .btn{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      padding:12px 16px;
-      border-radius:12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(245,245,245,0.92);
+      padding: 13px 18px;
+      border-radius: 14px;
       text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      min-width:170px;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      min-width: 180px;
       display:inline-flex;
       justify-content:center;
-      gap:8px;
-      align-items:center;
+      gap: 10px;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.40);
     }
-    .btn:hover{background:rgba(255,255,255,.08)}
-    .btn.primary{
-      background:rgba(255,255,255,.14);
-      border-color:rgba(255,255,255,.25);
+    .btn:hover{
+      background: rgba(255,255,255,0.09);
+      transform: translateY(-1px);
     }
+
+    /* Scripture block */
+    .scripture{
+      margin: 18px auto 0;
+      max-width: 920px;
+      background: var(--panel2);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      backdrop-filter: blur(10px);
+      text-align: left;
+    }
+    .scripture h2{
+      margin: 0 0 12px;
+      font-size: 16px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,0.80);
+    }
+    .quote{
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(245,245,245,0.90);
+    }
+    .ref{
+      margin: 10px 0 0;
+      color: rgba(245,245,245,0.68);
+      letter-spacing: 0.03em;
+      font-size: 14px;
+    }
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      margin: 16px 0;
+    }
+    .quote.alt{
+      color: rgba(245,245,245,0.92);
+    }
+    .gratitude{
+      color: var(--danger);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
     .grid{
       display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      margin-top:26px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      margin-top: 26px;
     }
-    @media(min-width:860px){
-      .grid{grid-template-columns:1.2fr .8fr}
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
     }
+
     .card{
-      background:rgba(255,255,255,.03);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:18px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: 0 22px 70px rgba(0,0,0,0.50);
+      backdrop-filter: blur(10px);
     }
-    .card h2{margin:0 0 10px;font-size:18px;letter-spacing:.06em}
-    .card p{margin:0;color:var(--muted);line-height:1.55}
-    .list{margin-top:10px;color:var(--muted);line-height:1.7}
-    .line{height:1px;background:var(--line);margin:18px 0}
+
+    .card h3{
+      margin:0 0 10px;
+      font-size: 22px;
+      letter-spacing: 0.03em;
+    }
+    .card p{
+      margin: 0 0 14px;
+      color: rgba(245,245,245,0.78);
+      line-height: 1.7;
+    }
+    .list{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: rgba(245,245,245,0.80);
+      line-height: 1.8;
+    }
+
+    .tokenList{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
+    .kv{
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      color: rgba(245,245,245,0.80);
+    }
+    .kv:last-child{ border-bottom: none; }
+    .pill{
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-weight: 700;
+      color: rgba(245,245,245,0.92);
+      letter-spacing: 0.04em;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
     footer{
-      margin-top:32px;
-      color:var(--muted);
-      font-size:13px;
+      margin-top: 28px;
+      padding: 26px 6px 0;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(245,245,245,0.55);
+      font-size: 13px;
       text-align:center;
     }
-    code{
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line);
-      padding:2px 6px;
-      border-radius:8px;
-      color:var(--text);
-    }
+    footer a{ color: rgba(245,245,245,0.75); }
   </style>
 </head>
 
 <body>
+  <div class="orchard" aria-hidden="true"></div>
+
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="dotlogo">T</div>
-        <div>
-          <div style="font-weight:700;letter-spacing:.10em">Te·enah</div>
-          <div style="font-size:12px;color:var(--muted);letter-spacing:.08em">Gratitude • Abundance • Remembrance</div>
+        <div class="logo">T</div>
+        <div class="brandText">
+          <strong>Te·enah</strong>
+          <span>Gratitude • Abundance • Remembrance</span>
         </div>
       </div>
+
       <nav>
         <a href="#about">About</a>
         <a href="#token">Token</a>
@@ -141,64 +325,83 @@
     <section class="hero">
       <div class="tagline">A sacred symbol of gratitude and abundance</div>
       <h1>Te·enah</h1>
-      <div class="tagline">Gratitude • Abundance • Remembrance</div>
+      <div class="subline">Gratitude • Abundance • Remembrance</div>
 
-      <div class="cta">
-        <a class="btn primary" href="#get">Get Te·enah</a>
+      <div class="ctaRow">
+        <a class="btn" href="#get">Get Te·enah</a>
         <a class="btn" href="#token">View Token Details</a>
         <a class="btn" href="#about">Read the Vision</a>
       </div>
+
+      <!-- SCRIPTURE SECTION -->
+      <section class="scripture" id="scripture">
+        <h2>Scripture</h2>
+
+        <p class="quote">
+          “For whoever has, to him more will be given, and he will have abundance;
+          but whoever does not have, even what he has will be taken away from him.”
+        </p>
+        <p class="ref">— Matthew 13:12 (NKJV)</p>
+
+        <div class="divider"></div>
+
+        <p class="quote alt">
+          “For whoever has <span class="gratitude">GRATITUDE</span>, to him more will be given;
+          and whoever does not have <span class="gratitude">GRATITUDE</span>,
+          even what he has will be taken away.”
+        </p>
+      </section>
     </section>
 
     <section class="grid">
       <div class="card" id="about">
-        <h2>What is Te·enah?</h2>
+        <h3>What is Te·enah?</h3>
         <p>
           Te·enah is a symbol and a project built around gratitude, abundance, and remembrance.
-          The mission is simple: help people share stories of gratitude—and turn those stories into a movement.
+          The mission is simple: help people share stories of gratitude — and turn those stories into a movement.
         </p>
-        <div class="line"></div>
-        <div class="list">
-          • Meaning: Gratitude → Abundance<br/>
-          • Theme: “By their fruits you will know them.”<br/>
-          • Purpose: Build a community site where people can give and receive Te·enah as a gift.
-        </div>
+
+        <ul class="list">
+          <li><strong>Meaning:</strong> Gratitude → Abundance</li>
+          <li><strong>Theme:</strong> “By their fruits you will know them.”</li>
+          <li><strong>Purpose:</strong> Build a community site where people can give and receive Te·enah as a gift.</li>
+        </ul>
       </div>
 
       <div class="card" id="token">
-        <h2>Token info</h2>
-        <p>Replace the placeholders below once you’re ready to publish your official on-chain details.</p>
-        <div class="line"></div>
-        <div class="list">
-          • Network: <code>BNB Smart Chain</code><br/>
-          • Symbol: <code>T</code><br/>
-          • Total Supply: <code>33,000,000</code><br/>
-          • Contract: <code>PASTE_CONTRACT_ADDRESS_HERE</code><br/>
-          • Explorer: <code>PASTE_BSCSCAN_LINK_HERE</code>
+        <h3>Token info</h3>
+        <p>
+          Replace the placeholders below once you’re ready to publish your official on-chain details.
+        </p>
+
+        <div class="tokenList">
+          <div class="kv"><span>Network:</span> <span class="pill">BNB Smart Chain</span></div>
+          <div class="kv"><span>Symbol:</span> <span class="pill">T</span></div>
+          <div class="kv"><span>Total Supply:</span> <span class="pill">36,000,000</span></div>
+          <div class="kv"><span>Contract:</span> <span class="pill">PASTE_CONTRACT_ADDRESS_HERE</span></div>
         </div>
       </div>
     </section>
 
-    <section class="card" id="get" style="margin-top:14px">
-      <h2>Get Te·enah</h2>
+    <section class="card" id="get" style="margin-top:18px;">
+      <h3>Get Te·enah</h3>
       <p>
-        Add your official links here (Buy / Receive / Swap / Contact). For now, we can keep it simple.
+        Coming soon: a simple way to receive Te·enah as a gift — or purchase it to gift to someone else.
       </p>
-      <div class="line"></div>
-      <div class="cta" style="justify-content:flex-start">
-        <a class="btn primary" href="#">Buy Te·enah (link)</a>
-        <a class="btn" href="#">Receive Te·enah (link)</a>
-        <a class="btn" href="#">Contact (email/link)</a>
-      </div>
+      <ul class="list">
+        <li>Step 1: Prepare your wallet (MetaMask).</li>
+        <li>Step 2: Connect on BNB Smart Chain.</li>
+        <li>Step 3: Use the official contract address (publish here when ready).</li>
+      </ul>
     </section>
 
     <footer>
-      © <span id="y"></span> Te·enah. All rights reserved.
+      © <span id="year"></span> Te·enah — Gratitude • Abundance • Remembrance
     </footer>
   </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
