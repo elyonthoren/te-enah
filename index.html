@@ -1,335 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Te•enah — Gratitude • Abundance • Remembrance</title>
-  <meta name="description" content="Te•enah is a symbol and a project built around gratitude, abundance, and remembrance." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Te·enah — Gratitude · Abundance · Remembrance</title>
+
+  <meta name="description" content="Te·enah is a symbol of gratitude, abundance, and remembrance." />
 
   <style>
-    :root{
-      --bg1:#0b1a12;   /* deep fig-leaf green */
-      --bg2:#1a0b24;   /* deep fig-skin purple */
-      --card: rgba(0,0,0,.55);
-      --border: rgba(255,255,255,.10);
-      --text:#f2f2f2;
-      --muted: rgba(242,242,242,.70);
-      --accent:#7CFF9A;      /* soft green */
-      --accent2:#B794F4;     /* soft purple */
-      --danger:#ff3b3b;
-      --shadow: 0 20px 70px rgba(0,0,0,.55);
-      --radius: 26px;
-      --max: 1100px;
+    :root {
+      --green: #1f5a3a;
+      --gold: #c9a24d;
+      --text: #f3f3f3;
+      --card: rgba(0,0,0,0.55);
+      --border: rgba(255,255,255,0.12);
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 600px at 20% 10%, rgba(124,255,154,.18), transparent 60%),
-        radial-gradient(900px 600px at 80% 15%, rgba(183,148,244,.18), transparent 60%),
-        linear-gradient(115deg, var(--bg1), #060606 45%, var(--bg2));
-      min-height:100vh;
+    * {
+      box-sizing: border-box;
     }
 
-    /* Optional orchard image:
-       Upload an image to /assets/fig-orchard.jpg and uncomment below
-    */
-    /*
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:url("assets/fig-orchard.jpg") center/cover no-repeat;
-      opacity:.18;
-      pointer-events:none;
-      filter:saturate(1.1) contrast(1.05);
-    }
-    */
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
 
-    .wrap{
-      position:relative;
-      max-width:var(--max);
-      margin:0 auto;
-      padding:70px 18px 60px;
+      background-image:
+        linear-gradient(
+          rgba(0,0,0,0.55),
+          rgba(0,0,0,0.65)
+        ),
+        url("assets/orchard.jpg.png");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
 
-    header{
-      text-align:center;
-      margin-bottom:26px;
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
     }
 
-    h1{
-      margin:0;
-      font-size:72px;
-      letter-spacing:1px;
-      font-weight:900;
-    }
-    .tagline{
-      margin:10px 0 22px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:rgba(255,255,255,.65);
-      font-size:13px;
+    header img {
+      width: 140px;
+      margin-bottom: 20px;
     }
 
-    .tabs{
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-      margin:10px auto 28px;
-    }
-    .tab{
-      border:1px solid var(--border);
-      background:rgba(0,0,0,.35);
-      color:var(--text);
-      padding:10px 18px;
-      border-radius:999px;
-      cursor:pointer;
-      user-select:none;
-      box-shadow:0 10px 30px rgba(0,0,0,.35);
-      transition:.15s transform, .15s background, .15s border-color;
-      font-weight:700;
-    }
-    .tab:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.18) }
-    .tab.active{
-      background:rgba(124,255,154,.10);
-      border-color:rgba(124,255,154,.35);
-      box-shadow:0 10px 30px rgba(124,255,154,.10);
+    h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      letter-spacing: 0.04em;
     }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px;
-      backdrop-filter: blur(10px);
+    .tagline {
+      margin-top: 10px;
+      letter-spacing: 0.25em;
+      font-size: 0.9rem;
+      color: #d6d6d6;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      margin-top:18px;
-    }
-    @media (max-width: 860px){
-      h1{font-size:48px}
-      .grid{grid-template-columns:1fr}
+    nav {
+      margin-top: 30px;
     }
 
-    .kicker{
-      letter-spacing:4px;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(255,255,255,.65);
-      margin-bottom:12px;
-      font-weight:800;
+    nav a {
+      display: inline-block;
+      margin: 6px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.35);
+      transition: all 0.25s ease;
     }
 
-    .quote{
-      font-size:20px;
-      line-height:1.6;
-      margin:0 0 12px;
-      color:rgba(255,255,255,.92);
-    }
-    .cite{
-      margin:0 0 18px;
-      color:rgba(255,255,255,.70);
-      font-weight:700;
-    }
-    hr.sep{
-      border:0;
-      height:1px;
-      background:rgba(255,255,255,.14);
-      margin:18px 0;
-    }
-    .grat{
-      color:var(--danger);
-      font-weight:900;
-      text-decoration:underline;
-      text-underline-offset:4px;
+    nav a:hover {
+      background: rgba(31,90,58,0.8);
+      border-color: var(--gold);
     }
 
-    h2{
-      margin:0 0 10px;
-      font-size:28px;
-      letter-spacing:.2px;
-    }
-    p{ margin:0 0 12px; color:rgba(255,255,255,.78); line-height:1.7 }
-    ul{ margin:0; padding-left:20px; color:rgba(255,255,255,.78); line-height:1.9 }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:30px;
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-      font-weight:800;
-      letter-spacing:.3px;
-      color:rgba(255,255,255,.92);
-      white-space:nowrap;
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
     }
 
-    .kv{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 0;
-      border-top:1px solid rgba(255,255,255,.10);
+    section h2 {
+      margin-top: 0;
+      letter-spacing: 0.12em;
     }
-    .kv:first-of-type{ border-top:0; margin-top:6px }
-    .kv .key{ color:rgba(255,255,255,.70); font-weight:800 }
-    .kv .val{ font-weight:900 }
 
-    .section{ display:none; }
-    .section.active{ display:block; }
-
-    footer{
-      margin-top:26px;
-      text-align:center;
-      color:rgba(255,255,255,.55);
-      font-size:14px;
-      padding:18px 0 0;
+    .scripture {
+      font-style: italic;
+      line-height: 1.6;
     }
-    a{ color:var(--accent); text-decoration:none; font-weight:800 }
-    a:hover{ text-decoration:underline; text-underline-offset:3px }
+
+    .highlight {
+      color: #ff4d4d;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+      color: #cfcfcf;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.3rem;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
 
-    <header>
-      <h1>Te•enah</h1>
-      <div class="tagline">GRATITUDE • ABUNDANCE • REMEMBRANCE</div>
+  <header>
+    <img src="assets/teenah-icon.svg" alt="Te·enah Symbol" />
 
-      <div class="tabs" role="tablist" aria-label="Te-enah sections">
-        <div class="tab active" data-target="home" role="tab" aria-selected="true">Home</div>
-        <div class="tab" data-target="token" role="tab" aria-selected="false">Token</div>
-        <div class="tab" data-target="vision" role="tab" aria-selected="false">Vision</div>
-        <div class="tab" data-target="contact" role="tab" aria-selected="false">Contact</div>
-      </div>
-    </header>
+    <h1>Te·enah</h1>
+    <div class="tagline">GRATITUDE · ABUNDANCE · REMEMBRANCE</div>
 
-    <!-- HOME -->
-    <section id="home" class="section active">
-      <div class="card">
-        <div class="kicker">SCRIPTURE</div>
-        <p class="quote">
-          “For whoever has, to him more will be given, and he will have abundance; but whoever does not have, even what he has will be taken away.”
-        </p>
-        <p class="cite">— Matthew 13:12 (NKJV)</p>
-        <hr class="sep" />
-        <p class="quote">
-          “For whoever has <span class="grat">GRATITUDE</span>, to him more will be given; and whoever does not have <span class="grat">GRATITUDE</span>, even what he has will be taken away.”
-        </p>
-      </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#token">Token</a>
+      <a href="#vision">Vision</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      <div class="grid">
-        <div class="card">
-          <h2>What is Te•enah?</h2>
-          <p>
-            Te•enah is a symbol and a project built around gratitude, abundance, and remembrance.
-            The mission is simple: help people live gratitude — and let gratitude multiply good fruit.
-          </p>
-          <ul>
-            <li><strong>Meaning:</strong> Gratitude → Abundance</li>
-            <li><strong>Theme:</strong> “By their fruits you will know them.”</li>
-            <li><strong>Purpose:</strong> A simple, transparent token + a clean official site.</li>
-          </ul>
-        </div>
+  <section id="home">
+    <h2>Scripture</h2>
 
-        <div class="card">
-          <h2>Token Info</h2>
-          <p>Replace placeholders below only when you’re ready to publish final on-chain details.</p>
+    <p class="scripture">
+      “For whoever has, to him more will be given, and he will have abundance;
+      but whoever does not have, even what he has will be taken away.”
+    </p>
 
-          <div class="kv"><div class="key">Network:</div><div class="val"><span class="pill">BNB Smart Chain</span></div></div>
-          <div class="kv"><div class="key">Symbol:</div><div class="val"><span class="pill">T</span></div></div>
-          <div class="kv"><div class="key">Total Supply:</div><div class="val"><span class="pill">36,000,000</span></div></div>
-          <div class="kv"><div class="key">Contract:</div><div class="val"><span class="pill">PASTE_CONTRACT_ADDRESS_HERE</span></div></div>
-        </div>
-      </div>
-    </section>
+    <p>— Matthew 13:12 (NKJV)</p>
 
-    <!-- TOKEN -->
-    <section id="token" class="section">
-      <div class="card">
-        <h2>Token</h2>
-        <p>
-          This page is reserved for official on-chain details (contract address, explorers, and verified metadata)
-          once everything is finalized.
-        </p>
-        <ul>
-          <li>Contract verification (BscScan / etc.)</li>
-          <li>Explorer links</li>
-          <li>Logo (32×32 SVG)</li>
-        </ul>
-      </div>
-    </section>
+    <hr />
 
-    <!-- VISION -->
-    <section id="vision" class="section">
-      <div class="card">
-        <h2>Vision</h2>
-        <p>
-          Te•enah is built on a simple principle: gratitude multiplies good fruit.
-          The long-term vision is a clean, public presence that reflects transparency, simplicity, and steady growth.
-        </p>
-        <p style="color:rgba(255,255,255,.70)">
-          No exaggerated claims. No gimmicks. Just a clear symbol and a clear message.
-        </p>
-      </div>
-    </section>
+    <p class="scripture">
+      “For whoever has <span class="highlight">GRATITUDE</span>, to him more will be given;
+      and whoever does not have <span class="highlight">GRATITUDE</span>,
+      even what he has will be taken away.”
+    </p>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="card">
-        <h2>Contact</h2>
-        <p>Official project contact:</p>
-        <p>
-          <strong>Email:</strong>
-          <a href="mailto:elyonthoren@proton.me">elyonthoren@proton.me</a>
-        </p>
-        <p style="color:rgba(255,255,255,.65); margin-top:10px">
-          (Later, when your domain email is ready, we can switch this to something like
-          <strong>contact@te-enah.com</strong>.)
-        </p>
-      </div>
-    </section>
+  <section id="token">
+    <h2>Token</h2>
+    <p>
+      Te·enah is a symbolic digital token representing gratitude as a multiplier of good fruit.
+      It is designed with simplicity, transparency, and fixed supply.
+    </p>
+  </section>
 
-    <footer>
-      © 2025 Te•enah — Gratitude • Abundance • Remembrance
-    </footer>
+  <section id="vision">
+    <h2>Vision</h2>
+    <p>
+      Te·enah is built on a simple principle: gratitude multiplies good fruit.
+      The long-term vision is a clean public presence that reflects clarity,
+      humility, and steady growth.
+    </p>
+    <p>
+      No exaggerated claims. No gimmicks. Just a clear symbol and a clear message.
+    </p>
+  </section>
 
-  </div>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Official project contact:</p>
+    <p>
+      <strong>Email:</strong>
+      <a href="mailto:elyonthoren@proton.me" style="color:#7dffb3;">
+        elyonthoren@proton.me
+      </a>
+    </p>
+    <p style="font-size:0.85rem; opacity:0.8;">
+      (Domain email can be added later, e.g. contact@te-enah.com)
+    </p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Te·enah — Gratitude · Abundance · Remembrance
+  </footer>
 
   <script>
-    const tabs = document.querySelectorAll(".tab");
-    const sections = document.querySelectorAll(".section");
-
-    function setActive(targetId){
-      sections.forEach(s => s.classList.toggle("active", s.id === targetId));
-      tabs.forEach(t => {
-        const active = t.dataset.target === targetId;
-        t.classList.toggle("active", active);
-        t.setAttribute("aria-selected", active ? "true" : "false");
-      });
-      history.replaceState(null, "", "#" + targetId);
-    }
-
-    tabs.forEach(t => t.addEventListener("click", () => setActive(t.dataset.target)));
-
-    // Load from hash if present
-    const hash = (location.hash || "").replace("#","");
-    if(hash && document.getElementById(hash)) setActive(hash);
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
