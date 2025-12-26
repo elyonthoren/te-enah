@@ -3,18 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Te’enah</title>
-  <meta name="description" content="Te’enah — Gratitude & Abundance. Fixed supply: 36,000,000." />
+  <title>Te·enah</title>
+  <meta name="description" content="Te·enah — Gratitude & Abundance. Fixed supply: 36,000,000." />
 
   <style>
     :root{
       --bg: #0b0b0a;
-      --card: rgba(255,255,255,0.08);
-      --card-2: rgba(255,255,255,0.10);
       --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --line: rgba(255,255,255,0.16);
-      --accent: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --line: rgba(255,255,255,0.14);
       --shadow: 0 18px 60px rgba(0,0,0,0.55);
       --radius: 22px;
       --max: 1120px;
@@ -34,6 +31,8 @@
 
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Top bar */
     .topbar{
       position:sticky; top:0; z-index:50;
       background: linear-gradient(to bottom, rgba(11,11,10,0.92), rgba(11,11,10,0.55), transparent);
@@ -42,13 +41,11 @@
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:16px;
+      padding:14px 0; gap:16px;
     }
     .brand{
       display:flex; align-items:baseline; gap:10px;
-      font-weight:700;
-      letter-spacing: 0.5px;
+      font-weight:700; letter-spacing: 0.6px;
     }
     .brand .dot{
       width:10px; height:10px; border-radius:50%;
@@ -57,7 +54,7 @@
       transform: translateY(-1px);
     }
     nav{
-      display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end;
+      display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size: 13px;
       letter-spacing: 0.35px;
@@ -75,7 +72,7 @@
       color: rgba(255,255,255,0.92);
     }
 
-    /* HERO */
+    /* Hero */
     .hero{
       position:relative;
       min-height: 82vh;
@@ -89,7 +86,7 @@
       position:absolute; inset:0;
       background:
         linear-gradient(to bottom, rgba(11,11,10,0.20), rgba(11,11,10,0.80) 70%, rgba(11,11,10,1)),
-        url("/assets/orchard/orchard-bg.jpg");
+        url("./assets/orchard-bg.jpg");
       background-size: cover;
       background-position: center;
       filter: saturate(1.15) contrast(1.05);
@@ -140,7 +137,6 @@
       line-height: 1.55;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-
     .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
     .pill{
       display:inline-flex; align-items:center; gap:10px;
@@ -153,6 +149,7 @@
       font-size: 13px;
     }
     .pill b{font-weight:700}
+
     .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
@@ -175,13 +172,6 @@
       border-color: rgba(255,255,255,0.92);
     }
     .btn.primary:hover{background: rgba(255,255,255,0.98)}
-    .note{
-      margin-top:12px;
-      color: rgba(255,255,255,0.72);
-      font-size: 13px;
-      line-height: 1.45;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
 
     .symbol-card{
       border-radius: var(--radius);
@@ -205,8 +195,7 @@
       width: min(420px, 100%);
       height: auto;
       display:block;
-      filter: saturate(1.1) contrast(1.05);
-      image-rendering: auto;
+      filter: saturate(1.12) contrast(1.05);
     }
     .symbol-caption{
       margin-top: 12px;
@@ -219,10 +208,8 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size: 13px;
     }
-    .symbol-caption span{white-space:nowrap}
-    .symbol-caption .muted{color: rgba(255,255,255,0.62); white-space:normal}
 
-    /* SECTIONS */
+    /* Sections */
     section{padding: 46px 0}
     .section-title{
       font-size: 26px;
@@ -236,7 +223,6 @@
       line-height: 1.6;
       max-width: 72ch;
     }
-
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -264,7 +250,7 @@
       font-size: 14px;
     }
 
-    /* GRATITUDE "GRACIAS" */
+    /* Thanks (EN only) */
     .thanks-wrap{
       border-radius: calc(var(--radius) + 6px);
       border: 1px solid rgba(255,255,255,0.12);
@@ -274,18 +260,7 @@
         rgba(255,255,255,0.05);
       box-shadow: 0 16px 65px rgba(0,0,0,0.40);
       overflow:hidden;
-    }
-    .thanks-inner{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .thanks-col{
-      padding: 24px 22px;
-    }
-    .thanks-col + .thanks-col{
-      border-left: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.10);
+      padding: 22px;
     }
     .thanks-head{
       display:flex; align-items:baseline; justify-content:space-between; gap:12px;
@@ -309,15 +284,15 @@
     .prayer{
       margin:0;
       white-space: pre-line;
-      color: rgba(255,255,255,0.82);
-      font-size: 15px;
-      line-height: 1.75;
+      color: rgba(255,255,255,0.84);
+      font-size: 16px;
+      line-height: 1.8;
       font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
     }
-    .prayer strong{color: rgba(255,255,255,0.94)}
-    .prayer .em{font-style: italic; color: rgba(255,255,255,0.90)}
+    .prayer strong{color: rgba(255,255,255,0.96)}
+    .prayer .em{font-style: italic; color: rgba(255,255,255,0.92)}
 
-    /* QUOTE */
+    /* Quotes */
     .quote{
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,0.12);
@@ -354,13 +329,10 @@
     .tiny{font-size: 13px}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-inner{grid-template-columns: 1fr; padding: 22px}
       .symbol-frame{min-height: 280px}
       .grid{grid-template-columns: 1fr}
-      .thanks-inner{grid-template-columns: 1fr}
-      .thanks-col + .thanks-col{border-left:0; border-top: 1px solid rgba(255,255,255,0.10)}
       nav{gap:8px}
     }
   </style>
@@ -372,12 +344,12 @@
       <div class="topbar-inner">
         <a class="brand" href="#top">
           <span class="dot" aria-hidden="true"></span>
-          <span>Te’enah</span>
+          <span>Te·enah</span>
         </a>
         <nav aria-label="Primary">
           <a href="#about">About</a>
           <a href="#token">Token</a>
-          <a href="#gracias">Gracias</a>
+          <a href="#thanks">Thanks</a>
           <a href="#words">Words</a>
         </nav>
       </div>
@@ -385,13 +357,12 @@
   </header>
 
   <main id="top">
-    <!-- HERO -->
     <section class="hero">
       <div class="wrap">
         <div class="hero-inner">
           <div>
             <p class="kicker">Gratitude & Abundance</p>
-            <h1>Te’enah</h1>
+            <h1>Te·enah</h1>
             <p class="subtitle">
               A simple symbol with a sacred intention: to remember gratitude, to recognize abundance,
               and to honor the Creator through your fruits.
@@ -404,47 +375,41 @@
             </div>
 
             <div class="cta-row">
-              <a class="btn primary" href="#gracias">Read “Gracias”</a>
+              <a class="btn primary" href="#thanks">Read “Thanks”</a>
               <a class="btn" href="#token">Token Details</a>
             </div>
-
-            <p class="note">
-              Tip: If your orchard background is not showing, confirm this file exists:
-              <span class="mono">/assets/orchard/orchard-bg.jpg</span>
-            </p>
           </div>
 
-          <div class="symbol-card" aria-label="Te’enah Symbol">
+          <div class="symbol-card" aria-label="Te·enah Symbol">
             <div class="symbol-frame">
-              <!-- Replace path below if your file name differs -->
-              <img src="/assets/symbols/teenah-symbol-full.png" alt="Te’enah symbol (full)" />
+              <!-- Put your full symbol image here -->
+              <img src="./assets/teenah-symbol-full.png" alt="Te·enah symbol (full)" />
             </div>
             <div class="symbol-caption">
               <span>Symbol (full)</span>
-              <span class="muted">Make sure this file exists: <span class="mono">/assets/symbols/teenah-symbol-full.png</span></span>
+              <span class="mono">./assets/teenah-symbol-full.png</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="wrap">
-        <h2 class="section-title">What is Te’enah?</h2>
+        <h2 class="section-title">What is Te·enah?</h2>
         <p class="section-sub">
-          Te’enah is built around a single purpose: a reminder that gratitude is a key that opens abundance.
-          This page is intentionally simple—no donations, no story uploads—only the core meaning we agreed on.
+          Te·enah is built around a single purpose: a reminder that gratitude is a key that opens abundance.
+          This page is intentionally simple—no donations, no story uploads—only the core meaning.
         </p>
 
         <div class="grid">
           <div class="card">
             <h3>Simple by design</h3>
-            <p>Minimal features, clean layout, and a symbol that stays visible and respected—no watermark look, no screenshots.</p>
+            <p>Minimal features, clean layout, and a symbol that stays visible and respected.</p>
           </div>
           <div class="card">
             <h3>Gratitude first</h3>
-            <p>Te’enah is a reminder: gratitude transforms the heart, and the heart transforms the fruit.</p>
+            <p>Gratitude transforms the heart, and the heart transforms the fruit.</p>
           </div>
           <div class="card">
             <h3>Creator-centered</h3>
@@ -454,13 +419,10 @@
       </div>
     </section>
 
-    <!-- TOKEN DETAILS -->
     <section id="token">
       <div class="wrap">
         <h2 class="section-title">Token details</h2>
-        <p class="section-sub">
-          These are the essentials in one place.
-        </p>
+        <p class="section-sub">Essentials in one place.</p>
 
         <div class="grid">
           <div class="card">
@@ -473,52 +435,26 @@
           </div>
           <div class="card">
             <h3>Network</h3>
-            <p>BNB Smart Chain (BSC). (You can add contract link later if you want.)</p>
+            <p>BNB Smart Chain (BSC).</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- GRACIAS -->
-    <section id="gracias">
+    <section id="thanks">
       <div class="wrap">
-        <h2 class="section-title">Gracias</h2>
+        <h2 class="section-title">Thanks</h2>
         <p class="section-sub">
-          A prayer of gratitude—kept in its own section, clear and readable, as part of the website (not a watermark).
+          A prayer of gratitude—kept clear and readable, as part of the website (not a watermark).
         </p>
 
         <div class="thanks-wrap">
-          <div class="thanks-inner">
-            <div class="thanks-col">
-              <div class="thanks-head">
-                <h3>Oración de Gratitud</h3>
-                <div class="tag">ES</div>
-              </div>
-              <p class="prayer">
-<strong>Gracias te doy, Padre, por la vida y por tu creación.</strong>
-Gracias por la familia que me has dado, pues es perfecta, porque perfecto eres Tú y perfecta es tu obra.
-Amo a todos y cada uno de los miembros de mi familia, y agradezco profundamente su existencia.
+          <div class="thanks-head">
+            <h3>Prayer of Gratitude</h3>
+            <div class="tag">EN</div>
+          </div>
 
-Agradezco inmensamente que nos cuides, que nos concedas salud perfecta, que siempre nos protejas y que nos brindes todo lo que necesitamos y todo lo que anhelamos.
-Es un privilegio habitar este paraíso que has creado.
-
-Agradezco a todas las personas que has puesto en mi camino y que han contribuido a mi aprendizaje y a mi crecimiento en esta vida.
-Agradezco también las pruebas difíciles que he enfrentado y que he superado gracias a tu presencia, que me fortaleció para vencerlas.
-
-Porque gracias a esos desafíos superados he encontrado la verdad.
-Gracias por tu bondad, por tu generosidad, por tu misericordia y por tu amor infinito hacia mí.
-
-<strong>Padre, gracias por existir, porque yo vivo en Ti y Tú vives en mí.</strong>
-<span class="em">Gracias infinitas.</span>
-              </p>
-            </div>
-
-            <div class="thanks-col">
-              <div class="thanks-head">
-                <h3>Prayer of Gratitude</h3>
-                <div class="tag">EN</div>
-              </div>
-              <p class="prayer">
+          <p class="prayer">
 <strong>Thank You, Father, for life and for Your creation.</strong>
 Thank You for the family You have given me, for it is perfect, because You are perfect and Your creation is perfect.
 I love each and every member of my family, and I deeply thank You for their existence.
@@ -534,14 +470,11 @@ Thank You for Your goodness, Your generosity, Your mercy, and Your infinite love
 
 <strong>Father, thank You for existing, for I live in You and You live in me.</strong>
 <span class="em">Infinite thanks.</span>
-              </p>
-            </div>
-          </div>
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- WORDS -->
     <section id="words">
       <div class="wrap">
         <h2 class="section-title">Words</h2>
@@ -558,7 +491,7 @@ Thank You for Your goodness, Your generosity, Your mercy, and Your infinite love
 
         <div class="quote">
           “For the one who has <span class="accent">GRATITUDE</span>, more will be given; and the one who has no <span class="accent">GRATITUDE</span>, even what he has will be taken away.”
-          <small>Adapted emphasis for Te’enah (Gratitude & Abundance)</small>
+          <small>Adapted emphasis for Te·enah (Gratitude & Abundance)</small>
         </div>
       </div>
     </section>
@@ -566,17 +499,11 @@ Thank You for Your goodness, Your generosity, Your mercy, and Your infinite love
     <footer>
       <div class="wrap">
         <div class="footer-inner">
-          <div class="tiny">
-            <b>Te’enah</b> — Gratitude & Abundance
-          </div>
-          <div class="tiny">
-            Fixed supply: <span class="mono">36,000,000</span>
-          </div>
+          <div class="tiny"><b>Te·enah</b> — Gratitude & Abundance</div>
+          <div class="tiny">Fixed supply: <span class="mono">36,000,000</span></div>
         </div>
         <div class="tiny" style="margin-top:10px; color: rgba(255,255,255,0.58);">
-          Note: To replace images, update:
-          <span class="mono">/assets/orchard/orchard-bg.jpg</span> and
-          <span class="mono">/assets/symbols/teenah-symbol-full.png</span>.
+          Background image: <span class="mono">./assets/orchard-bg.jpg</span>
         </div>
       </div>
     </footer>
