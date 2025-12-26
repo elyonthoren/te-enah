@@ -1,204 +1,585 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Te·enah — Gratitude · Abundance · Remembrance</title>
-
-  <meta name="description" content="Te·enah is a symbol of gratitude, abundance, and remembrance." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Te’enah</title>
+  <meta name="description" content="Te’enah — Gratitude & Abundance. Fixed supply: 36,000,000." />
 
   <style>
-    :root {
-      --green: #1f5a3a;
-      --gold: #c9a24d;
-      --text: #f3f3f3;
-      --card: rgba(0,0,0,0.55);
-      --border: rgba(255,255,255,0.12);
+    :root{
+      --bg: #0b0b0a;
+      --card: rgba(255,255,255,0.08);
+      --card-2: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --line: rgba(255,255,255,0.16);
+      --accent: rgba(255,255,255,0.92);
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
+      --radius: 22px;
+      --max: 1120px;
     }
 
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% 0%, rgba(255,255,255,0.06), transparent 60%),
+                  radial-gradient(1000px 600px at 90% 10%, rgba(255,255,255,0.04), transparent 55%),
+                  var(--bg);
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      letter-spacing: 0.2px;
     }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(to bottom, rgba(11,11,10,0.92), rgba(11,11,10,0.55), transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:baseline; gap:10px;
+      font-weight:700;
+      letter-spacing: 0.5px;
+    }
+    .brand .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 0 22px rgba(255,255,255,0.22);
+      transform: translateY(-1px);
+    }
+    nav{
+      display:flex; gap:16px; flex-wrap:wrap; justify-content:flex-end;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+    nav a{
+      padding:10px 10px;
+      border-radius: 999px;
+      color: rgba(255,255,255,0.78);
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.92);
+    }
 
-      background-image:
-        linear-gradient(
-          rgba(0,0,0,0.55),
-          rgba(0,0,0,0.65)
-        ),
-        url("assets/orchard.jpg.png");
-
+    /* HERO */
+    .hero{
+      position:relative;
+      min-height: 82vh;
+      display:flex;
+      align-items:center;
+      padding: 38px 0 22px;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(to bottom, rgba(11,11,10,0.20), rgba(11,11,10,0.80) 70%, rgba(11,11,10,1)),
+        url("/assets/orchard/orchard-bg.jpg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      filter: saturate(1.15) contrast(1.05);
+      transform: scale(1.02);
+      z-index:0;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px 420px at 50% 35%, rgba(255,255,255,0.18), transparent 58%),
+        radial-gradient(900px 520px at 20% 10%, rgba(255,255,255,0.06), transparent 50%);
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items:center;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px 30px;
+    .kicker{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2.4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
+      margin: 0 0 10px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(36px, 4.8vw, 64px);
+      line-height: 1.02;
+      letter-spacing: 0.2px;
+      text-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    }
+    .subtitle{
+      margin:0 0 18px;
+      color: rgba(255,255,255,0.82);
+      font-size: clamp(16px, 1.5vw, 18px);
+      line-height: 1.55;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    header img {
-      width: 140px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 3.2rem;
-      margin: 0;
-      letter-spacing: 0.04em;
-    }
-
-    .tagline {
-      margin-top: 10px;
-      letter-spacing: 0.25em;
-      font-size: 0.9rem;
-      color: #d6d6d6;
-    }
-
-    nav {
-      margin-top: 30px;
-    }
-
-    nav a {
-      display: inline-block;
-      margin: 6px;
-      padding: 10px 22px;
+    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 12px;
       border-radius: 999px;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,0.35);
-      transition: all 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.86);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 13px;
+    }
+    .pill b{font-weight:700}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.92);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:600;
+      letter-spacing: 0.3px;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.24)}
+    .btn.primary{
+      background: rgba(255,255,255,0.92);
+      color: rgba(0,0,0,0.92);
+      border-color: rgba(255,255,255,0.92);
+    }
+    .btn.primary:hover{background: rgba(255,255,255,0.98)}
+    .note{
+      margin-top:12px;
+      color: rgba(255,255,255,0.72);
+      font-size: 13px;
+      line-height: 1.45;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    nav a:hover {
-      background: rgba(31,90,58,0.8);
-      border-color: var(--gold);
+    .symbol-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.45);
+      padding: 16px;
+      overflow:hidden;
+    }
+    .symbol-frame{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.25);
+      padding: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 340px;
+    }
+    .symbol-frame img{
+      width: min(420px, 100%);
+      height: auto;
+      display:block;
+      filter: saturate(1.1) contrast(1.05);
+      image-rendering: auto;
+    }
+    .symbol-caption{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color: rgba(255,255,255,0.78);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 13px;
+    }
+    .symbol-caption span{white-space:nowrap}
+    .symbol-caption .muted{color: rgba(255,255,255,0.62); white-space:normal}
+
+    /* SECTIONS */
+    section{padding: 46px 0}
+    .section-title{
+      font-size: 26px;
+      margin:0 0 10px;
+      letter-spacing: 0.2px;
+    }
+    .section-sub{
+      margin:0 0 22px;
+      color: rgba(255,255,255,0.76);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 72ch;
     }
 
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 30px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      backdrop-filter: blur(6px);
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      padding: 18px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      min-height: 160px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size: 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing: 0.2px;
+    }
+    .card p{
+      margin:0;
+      color: rgba(255,255,255,0.76);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 14px;
     }
 
-    section h2 {
-      margin-top: 0;
-      letter-spacing: 0.12em;
+    /* GRATITUDE "GRACIAS" */
+    .thanks-wrap{
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(255,255,255,0.08), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,0.06), transparent 60%),
+        rgba(255,255,255,0.05);
+      box-shadow: 0 16px 65px rgba(0,0,0,0.40);
+      overflow:hidden;
+    }
+    .thanks-inner{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .thanks-col{
+      padding: 24px 22px;
+    }
+    .thanks-col + .thanks-col{
+      border-left: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.10);
+    }
+    .thanks-head{
+      display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .thanks-head h3{
+      margin:0;
+      font-size: 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      letter-spacing: 0.2px;
+    }
+    .tag{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+    }
+    .prayer{
+      margin:0;
+      white-space: pre-line;
+      color: rgba(255,255,255,0.82);
+      font-size: 15px;
+      line-height: 1.75;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+    .prayer strong{color: rgba(255,255,255,0.94)}
+    .prayer .em{font-style: italic; color: rgba(255,255,255,0.90)}
+
+    /* QUOTE */
+    .quote{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      padding: 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.80);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.30);
+    }
+    .quote .accent{
+      color: rgba(255,255,255,0.95);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .quote small{
+      display:block;
+      margin-top: 10px;
+      color: rgba(255,255,255,0.62);
     }
 
-    .scripture {
-      font-style: italic;
+    footer{
+      padding: 28px 0 42px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.68);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height: 1.6;
     }
-
-    .highlight {
-      color: #ff4d4d;
-      font-weight: bold;
-      text-decoration: underline;
+    .footer-inner{
+      display:flex; flex-wrap:wrap; gap:14px;
+      align-items:center; justify-content:space-between;
     }
+    .tiny{font-size: 13px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.85rem;
-      color: #cfcfcf;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.3rem;
-      }
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns: 1fr; padding: 22px}
+      .symbol-frame{min-height: 280px}
+      .grid{grid-template-columns: 1fr}
+      .thanks-inner{grid-template-columns: 1fr}
+      .thanks-col + .thanks-col{border-left:0; border-top: 1px solid rgba(255,255,255,0.10)}
+      nav{gap:8px}
     }
   </style>
 </head>
 
 <body>
-
-  <header>
-    <img src="assets/teenah-icon.svg" alt="Te·enah Symbol" />
-
-    <h1>Te·enah</h1>
-    <div class="tagline">GRATITUDE · ABUNDANCE · REMEMBRANCE</div>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#token">Token</a>
-      <a href="#vision">Vision</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <a class="brand" href="#top">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Te’enah</span>
+        </a>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#token">Token</a>
+          <a href="#gracias">Gracias</a>
+          <a href="#words">Words</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <section id="home">
-    <h2>Scripture</h2>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-inner">
+          <div>
+            <p class="kicker">Gratitude & Abundance</p>
+            <h1>Te’enah</h1>
+            <p class="subtitle">
+              A simple symbol with a sacred intention: to remember gratitude, to recognize abundance,
+              and to honor the Creator through your fruits.
+            </p>
 
-    <p class="scripture">
-      “For whoever has, to him more will be given, and he will have abundance;
-      but whoever does not have, even what he has will be taken away.”
-    </p>
+            <div class="pill-row">
+              <span class="pill"><b>Fixed Supply</b> 36,000,000</span>
+              <span class="pill"><b>Symbol</b> T</span>
+              <span class="pill"><b>Network</b> BSC</span>
+            </div>
 
-    <p>— Matthew 13:12 (NKJV)</p>
+            <div class="cta-row">
+              <a class="btn primary" href="#gracias">Read “Gracias”</a>
+              <a class="btn" href="#token">Token Details</a>
+            </div>
 
-    <hr />
+            <p class="note">
+              Tip: If your orchard background is not showing, confirm this file exists:
+              <span class="mono">/assets/orchard/orchard-bg.jpg</span>
+            </p>
+          </div>
 
-    <p class="scripture">
-      “For whoever has <span class="highlight">GRATITUDE</span>, to him more will be given;
-      and whoever does not have <span class="highlight">GRATITUDE</span>,
-      even what he has will be taken away.”
-    </p>
-  </section>
+          <div class="symbol-card" aria-label="Te’enah Symbol">
+            <div class="symbol-frame">
+              <!-- Replace path below if your file name differs -->
+              <img src="/assets/symbols/teenah-symbol-full.png" alt="Te’enah symbol (full)" />
+            </div>
+            <div class="symbol-caption">
+              <span>Symbol (full)</span>
+              <span class="muted">Make sure this file exists: <span class="mono">/assets/symbols/teenah-symbol-full.png</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="token">
-    <h2>Token</h2>
-    <p>
-      Te·enah is a symbolic digital token representing gratitude as a multiplier of good fruit.
-      It is designed with simplicity, transparency, and fixed supply.
-    </p>
-  </section>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <h2 class="section-title">What is Te’enah?</h2>
+        <p class="section-sub">
+          Te’enah is built around a single purpose: a reminder that gratitude is a key that opens abundance.
+          This page is intentionally simple—no donations, no story uploads—only the core meaning we agreed on.
+        </p>
 
-  <section id="vision">
-    <h2>Vision</h2>
-    <p>
-      Te·enah is built on a simple principle: gratitude multiplies good fruit.
-      The long-term vision is a clean public presence that reflects clarity,
-      humility, and steady growth.
-    </p>
-    <p>
-      No exaggerated claims. No gimmicks. Just a clear symbol and a clear message.
-    </p>
-  </section>
+        <div class="grid">
+          <div class="card">
+            <h3>Simple by design</h3>
+            <p>Minimal features, clean layout, and a symbol that stays visible and respected—no watermark look, no screenshots.</p>
+          </div>
+          <div class="card">
+            <h3>Gratitude first</h3>
+            <p>Te’enah is a reminder: gratitude transforms the heart, and the heart transforms the fruit.</p>
+          </div>
+          <div class="card">
+            <h3>Creator-centered</h3>
+            <p>Honoring the Creator through truth, humility, and a life that produces good fruit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Official project contact:</p>
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:elyonthoren@proton.me" style="color:#7dffb3;">
-        elyonthoren@proton.me
-      </a>
-    </p>
-    <p style="font-size:0.85rem; opacity:0.8;">
-      (Domain email can be added later, e.g. contact@te-enah.com)
-    </p>
-  </section>
+    <!-- TOKEN DETAILS -->
+    <section id="token">
+      <div class="wrap">
+        <h2 class="section-title">Token details</h2>
+        <p class="section-sub">
+          These are the essentials in one place.
+        </p>
 
-  <footer>
-    © <span id="year"></span> Te·enah — Gratitude · Abundance · Remembrance
-  </footer>
+        <div class="grid">
+          <div class="card">
+            <h3>Supply</h3>
+            <p><b>36,000,000</b> total tokens (fixed). No inflation.</p>
+          </div>
+          <div class="card">
+            <h3>Symbol</h3>
+            <p><b>T</b> — a simple mark carrying a sacred intention.</p>
+          </div>
+          <div class="card">
+            <h3>Network</h3>
+            <p>BNB Smart Chain (BSC). (You can add contract link later if you want.)</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- GRACIAS -->
+    <section id="gracias">
+      <div class="wrap">
+        <h2 class="section-title">Gracias</h2>
+        <p class="section-sub">
+          A prayer of gratitude—kept in its own section, clear and readable, as part of the website (not a watermark).
+        </p>
 
+        <div class="thanks-wrap">
+          <div class="thanks-inner">
+            <div class="thanks-col">
+              <div class="thanks-head">
+                <h3>Oración de Gratitud</h3>
+                <div class="tag">ES</div>
+              </div>
+              <p class="prayer">
+<strong>Gracias te doy, Padre, por la vida y por tu creación.</strong>
+Gracias por la familia que me has dado, pues es perfecta, porque perfecto eres Tú y perfecta es tu obra.
+Amo a todos y cada uno de los miembros de mi familia, y agradezco profundamente su existencia.
+
+Agradezco inmensamente que nos cuides, que nos concedas salud perfecta, que siempre nos protejas y que nos brindes todo lo que necesitamos y todo lo que anhelamos.
+Es un privilegio habitar este paraíso que has creado.
+
+Agradezco a todas las personas que has puesto en mi camino y que han contribuido a mi aprendizaje y a mi crecimiento en esta vida.
+Agradezco también las pruebas difíciles que he enfrentado y que he superado gracias a tu presencia, que me fortaleció para vencerlas.
+
+Porque gracias a esos desafíos superados he encontrado la verdad.
+Gracias por tu bondad, por tu generosidad, por tu misericordia y por tu amor infinito hacia mí.
+
+<strong>Padre, gracias por existir, porque yo vivo en Ti y Tú vives en mí.</strong>
+<span class="em">Gracias infinitas.</span>
+              </p>
+            </div>
+
+            <div class="thanks-col">
+              <div class="thanks-head">
+                <h3>Prayer of Gratitude</h3>
+                <div class="tag">EN</div>
+              </div>
+              <p class="prayer">
+<strong>Thank You, Father, for life and for Your creation.</strong>
+Thank You for the family You have given me, for it is perfect, because You are perfect and Your creation is perfect.
+I love each and every member of my family, and I deeply thank You for their existence.
+
+I am immensely grateful that You care for us, grant us perfect health, protect us at all times, and provide us with everything we need and everything we desire.
+It is a privilege to dwell in this paradise You have created.
+
+I give thanks for all the people You have placed in my path, who have contributed to my learning and growth in this life.
+I also give thanks for the difficult trials I have faced and overcome through Your presence, which strengthened me to surpass them.
+
+For through these challenges overcome, I have found the truth.
+Thank You for Your goodness, Your generosity, Your mercy, and Your infinite love for me.
+
+<strong>Father, thank You for existing, for I live in You and You live in me.</strong>
+<span class="em">Infinite thanks.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORDS -->
+    <section id="words">
+      <div class="wrap">
+        <h2 class="section-title">Words</h2>
+        <p class="section-sub">
+          The teaching you wanted included (English), and the gratitude emphasis.
+        </p>
+
+        <div class="quote">
+          “For to everyone who has, more will be given, and he will have an abundance; but from the one who has not, even what he has will be taken away.”
+          <small>— Matthew 25:29 (ESV)</small>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="quote">
+          “For the one who has <span class="accent">GRATITUDE</span>, more will be given; and the one who has no <span class="accent">GRATITUDE</span>, even what he has will be taken away.”
+          <small>Adapted emphasis for Te’enah (Gratitude & Abundance)</small>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-inner">
+          <div class="tiny">
+            <b>Te’enah</b> — Gratitude & Abundance
+          </div>
+          <div class="tiny">
+            Fixed supply: <span class="mono">36,000,000</span>
+          </div>
+        </div>
+        <div class="tiny" style="margin-top:10px; color: rgba(255,255,255,0.58);">
+          Note: To replace images, update:
+          <span class="mono">/assets/orchard/orchard-bg.jpg</span> and
+          <span class="mono">/assets/symbols/teenah-symbol-full.png</span>.
+        </div>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
