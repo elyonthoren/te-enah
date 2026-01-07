@@ -1,502 +1,248 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Te·enah (T) — Gratitude & Abundance on BNB Smart Chain</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Neutral, explorer-friendly description -->
-  <meta name="description" content="Te·enah (T) is a symbolic digital asset on BNB Smart Chain centered on gratitude as remembrance and abundance. This site provides official links, token information, and transparency notes." />
-  <meta name="theme-color" content="#0a140c" />
+<title>Te·enah (T) — Gratitude & Abundance</title>
+<meta name="description" content="Te·enah (T) is a symbolic digital asset on BNB Smart Chain centered on gratitude as remembrance and abundance. Official token information and links.">
+<meta name="theme-color" content="#0a140c">
 
-  <style>
-    :root{
-      --bg:#071006;
-      --card: rgba(255,255,255,.10);
-      --card2: rgba(255,255,255,.08);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --muted2: rgba(255,255,255,.60);
-      --line: rgba(255,255,255,.16);
-      --gold: #f7d67b;
-      --accent: #9fe7c7;
-      --danger: #ff5a5a;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius: 20px;
-      --radius2: 14px;
-    }
+<style>
+:root{
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --card: rgba(255,255,255,.12);
+  --line: rgba(255,255,255,.18);
+  --gold: #f7d67b;
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius: 20px;
+  --radius2: 14px;
+}
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: #061006;
-      overflow-x:hidden;
-    }
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--text);
+  background:#061006;
+}
 
-    /* Background orchard image (formal) */
-    .orchard{
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      background-image: url("orchard-bg.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    /* Dark overlay for readability */
-    .orchard::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(1200px 900px at 55% 18%, rgba(0,0,0,.18), rgba(0,0,0,.55) 55%, rgba(0,0,0,.70) 100%),
-        linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.55) 65%, rgba(0,0,0,.72) 100%);
-      pointer-events:none;
-    }
+/* 🌿 ORCHARD BACKGROUND — BRIGHT VERSION */
+.orchard{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:url("orchard-bg.jpg") center/cover no-repeat;
+  filter: saturate(1.4) contrast(1.15) brightness(1.22);
+}
+.orchard::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(1200px 900px at 55% 18%, rgba(0,0,0,.04), rgba(0,0,0,.22) 55%, rgba(0,0,0,.38) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.18) 65%, rgba(0,0,0,.32) 100%);
+}
 
-    /* Layout */
-    .wrap{
-      width:min(1100px, 92vw);
-      margin:0 auto;
-      padding:42px 0 70px;
-      position:relative;
-    }
+/* LAYOUT */
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px 70px;
+}
 
-    header{
-      display:flex;
-      gap:18px;
-      align-items:flex-start;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding:18px 0 22px;
-    }
+header{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  align-items:flex-start;
+}
 
-    .brand{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex: 1 1 520px;
-      min-width: 280px;
-    }
+.brand{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
 
-    .mark{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: var(--shadow);
-      display:grid;
-      place-items:center;
-      backdrop-filter: blur(10px);
-      flex: 0 0 auto;
-    }
-    .mark svg{width:46px;height:46px}
+.logo{
+  width:64px;height:64px;
+  border-radius:18px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  display:grid;place-items:center;
+  box-shadow:var(--shadow);
+}
+.logo svg{width:44px;height:44px}
 
-    .title h1{
-      margin:0;
-      font-size: clamp(26px, 3.2vw, 40px);
-      letter-spacing: .2px;
-      line-height:1.05;
-    }
-    .title p{
-      margin:8px 0 0;
-      color:var(--muted);
-      max-width: 68ch;
-      line-height:1.55;
-    }
+h1{margin:0;font-size:38px}
+p{color:var(--muted);line-height:1.6}
 
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      flex: 0 0 auto;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-      color:var(--text);
-      text-decoration:none;
-      font-weight:650;
-      letter-spacing:.2px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(10px);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.14);
-      border-color: rgba(255,255,255,.28);
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(159,231,199,.22), rgba(255,214,123,.18));
-      border-color: rgba(255,255,255,.24);
-    }
-    .btn svg{width:18px;height:18px;opacity:.9}
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  margin-left:10px;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.25);
+}
 
-    .hero{
-      margin-top: 6px;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
-      border-radius: 24px;
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(500px 220px at 20% 0%, rgba(159,231,199,.18), transparent 60%),
-        radial-gradient(520px 240px at 80% 0%, rgba(255,214,123,.14), transparent 60%);
-      opacity:.55;
-      pointer-events:none;
-    }
-    .hero > *{position:relative}
+.hero{
+  margin-top:20px;
+  padding:20px;
+  border-radius:24px;
+  background:var(--card);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
 
-    .pillbar{ margin-top: 10px; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(0,0,0,.22);
-      color: rgba(255,255,255,.86);
-      font-weight:650;
-      font-size:13px;
-      margin:6px 8px 0 0;
-    }
-    .pill b{color:var(--gold)}
+.badges span{
+  display:inline-block;
+  margin:6px 8px 0 0;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.25);
+  font-size:14px;
+}
 
-    .grid{
-      display:grid;
-      gap:16px;
-      grid-template-columns: 1.2fr .8fr;
-      align-items:start;
-      margin-top: 16px;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns: 1fr}
-    }
+.grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+  margin-top:20px;
+}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
 
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid rgba(255,255,255,.16);
-      border-radius: var(--radius);
-      padding:18px 18px 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      position:relative;
-      overflow:hidden;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(520px 220px at 18% 0%, rgba(159,231,199,.18), transparent 60%),
-        radial-gradient(520px 220px at 82% 0%, rgba(255,214,123,.12), transparent 60%);
-      opacity:.55;
-      pointer-events:none;
-    }
-    .card > *{position:relative}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
 
-    .card h2{
-      margin:0 0 10px;
-      font-size: 18px;
-      letter-spacing:.3px;
-    }
-    .card p, .card li{
-      color:var(--muted);
-      line-height:1.6;
-      margin:0 0 10px;
-    }
-    .small{
-      font-size: 13.5px;
-      color: var(--muted2);
-      line-height:1.55;
-    }
-    .sep{
-      height:1px;
-      background: var(--line);
-      margin:14px 0;
-    }
+h2{margin-top:0}
 
-    .kv{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
-    .row{
-      display:grid;
-      grid-template-columns: 160px 1fr;
-      gap:12px;
-      padding:10px 12px;
-      border-radius: var(--radius2);
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    @media (max-width: 520px){
-      .row{grid-template-columns: 1fr}
-    }
-    .k{
-      color: rgba(255,255,255,.82);
-      font-weight:700;
-    }
-    .v{
-      color: rgba(255,255,255,.86);
-      word-break: break-word;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13.5px;
-    }
+.row{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:10px;
+  margin-bottom:8px;
+}
+@media(max-width:500px){
+  .row{grid-template-columns:1fr}
+}
 
-    .warn{
-      border:1px solid rgba(255,90,90,.35);
-      background: rgba(255,90,90,.08);
-      padding:12px 12px;
-      border-radius: 14px;
-      color: rgba(255,255,255,.86);
-    }
-    .warn strong{color:#ffd1d1}
+.key{font-weight:700}
+.val{font-family:monospace}
 
-    .links a{
-      color: rgba(255,255,255,.92);
-      text-decoration:none;
-      border-bottom: 1px dashed rgba(255,255,255,.35);
-    }
-    .links a:hover{
-      border-bottom-color: rgba(255,255,255,.85);
-    }
+.warn{
+  background:rgba(255,90,90,.10);
+  border:1px solid rgba(255,90,90,.35);
+  padding:12px;
+  border-radius:14px;
+}
 
-    .footer{
-      margin-top:18px;
-      padding:18px 0 0;
-      color: rgba(255,255,255,.60);
-      font-size: 12.5px;
-      line-height:1.6;
-      text-align:center;
-    }
-  </style>
+footer{
+  margin-top:24px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
-  <div class="orchard" aria-hidden="true"></div>
+<div class="orchard"></div>
 
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="mark" aria-hidden="true">
-          <!-- Simple emblem: star + fig + T (kept clean for clarity) -->
-          <svg viewBox="0 0 64 64" fill="none">
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#9fe7c7" stop-opacity="0.95"/>
-                <stop offset="1" stop-color="#ffd67b" stop-opacity="0.92"/>
-              </linearGradient>
-            </defs>
-            <circle cx="32" cy="32" r="28" stroke="url(#g1)" stroke-width="2.6" opacity="0.95"/>
-            <path d="M32 9 L36 22 L49 22 L38.5 30 L42.5 43 L32 35.5 L21.5 43 L25.5 30 L15 22 L28 22 Z"
-                  fill="url(#g1)" opacity="0.22"/>
-            <path d="M32 22 C40 16 46 28 38 32 C44 38 36 48 32 44 C28 48 20 38 26 32 C18 28 24 16 32 22 Z"
-                  fill="rgba(180,108,255,.85)"/>
-            <path d="M32 26 V44" stroke="rgba(255,255,255,.86)" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M25 26 H39" stroke="rgba(255,255,255,.86)" stroke-width="3.2" stroke-linecap="round"/>
-          </svg>
-        </div>
+<div class="wrap">
 
-        <div class="title">
-          <h1>Te·enah <span style="color:var(--gold)">(T)</span></h1>
-          <p>
-            A symbolic digital asset on <b>BNB Smart Chain</b>, centered on <b>gratitude</b> as a principle of remembrance and abundance.
-            This website provides clear project information, token details, and official links for verification.
-          </p>
-        </div>
-      </div>
-
-      <div class="cta">
-        <a class="btn primary" href="#token-info">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l3 6 6 .9-4.5 4.4 1.1 6.2L12 17.9 6.4 20.5l1.1-6.2L3 9.9 9 9l3-6z" stroke="currentColor" stroke-width="1.8"/></svg>
-          Token Info
-        </a>
-        <a class="btn" href="#links">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.1 0l1.9-1.9a5 5 0 0 0-7.1-7.1L10.9 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 11a5 5 0 0 0-7.1 0L5 12.9A5 5 0 0 0 12.1 20L13 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          Links
-        </a>
-        <a class="btn" href="#contact">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          Contact
-        </a>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div style="font-weight:850; letter-spacing:.3px; font-size:15px; color:rgba(255,255,255,.88)">
-        Gratitude • Abundance • Remembrance
-      </div>
-
-      <div class="pillbar">
-        <span class="pill"><b>Network</b> BNB Smart Chain</span>
-        <span class="pill"><b>Symbol</b> T</span>
-        <span class="pill"><b>Purpose</b> Values-based token</span>
-        <span class="pill"><b>Official Contact</b> info@te-enah.com</span>
-      </div>
-
-      <p class="small" style="margin-top:10px">
-        This page is intended to provide neutral, verifiable information for explorers, exchanges, and token listing reviews.
-      </p>
-    </section>
-
-    <div class="grid">
-      <!-- LEFT -->
-      <section class="card" id="about">
-        <h2>Project Overview</h2>
-        <p>
-          <b>Te·enah (T)</b> is a symbolic digital asset designed to represent <b>gratitude</b> as a daily practice and a principle of
-          remembrance and abundance. The project is intentionally simple and focuses on meaning, reflection, and community values.
-        </p>
-
-        <div class="sep"></div>
-
-        <h2>Utility & Scope</h2>
-        <p>
-          Te·enah is intended for basic token functions such as holding and transferring on-chain.
-          Any future integrations (e.g., community features or optional extensions) will be publicly documented.
-        </p>
-        <ul>
-          <li><b>Current scope:</b> standard transfers and basic token ownership on BNB Smart Chain.</li>
-          <li><b>No hidden mechanisms:</b> no taxes, no automatic rewards, and no forced staking.</li>
-          <li><b>Transparency-first:</b> official links and token details are provided on this page.</li>
-        </ul>
-
-        <div class="sep"></div>
-
-        <h2>Transparency & Disclaimer</h2>
-        <div class="warn">
-          <strong>Important:</strong> Te·enah is a symbolic/values-based project and is not presented as a guaranteed profit vehicle.
-          Always do your own research and use funds you can afford to lose.
-        </div>
-        <p class="small" style="margin-top:10px">
-          Nothing on this site constitutes financial advice. Token value may fluctuate.
-        </p>
-      </section>
-
-      <!-- RIGHT -->
-      <aside>
-        <section class="card" id="token-info">
-          <h2>Token Information</h2>
-
-          <div class="kv" aria-label="Token key value list">
-            <div class="row">
-              <div class="k">Token Name</div>
-              <div class="v">Te·enah</div>
-            </div>
-            <div class="row">
-              <div class="k">Symbol</div>
-              <div class="v">T</div>
-            </div>
-            <div class="row">
-              <div class="k">Network</div>
-              <div class="v">BNB Smart Chain (BSC)</div>
-            </div>
-            <div class="row">
-              <div class="k">Decimals</div>
-              <div class="v">18</div>
-            </div>
-            <div class="row">
-              <div class="k">Total Supply</div>
-              <div class="v">36,000,000</div>
-            </div>
-            <div class="row">
-              <div class="k">Contract</div>
-              <div class="v">0xA62acafA8e5a67247c751581bfF2a62f78645445</div>
-            </div>
-          </div>
-
-          <div class="sep"></div>
-
-          <h2>Disclosure (neutral)</h2>
-          <ul>
-            <li><b>No investment advice:</b> this project does not provide financial advice.</li>
-            <li><b>No guarantees:</b> token value can go up or down.</li>
-            <li><b>No exaggerated claims:</b> this site avoids “best/fastest/most used” statements.</li>
-          </ul>
-          <p class="small">
-            Use the contract address above and the official links below for verification.
-          </p>
-        </section>
-
-        <section class="card links" id="links" style="margin-top:16px">
-          <h2>Official Links</h2>
-          <p class="small">These are the official references for the Te·enah project.</p>
-
-          <div class="kv">
-            <div class="row">
-              <div class="k">Website</div>
-              <div class="v"><a href="https://te-enah.com" target="_blank" rel="noopener">https://te-enah.com</a></div>
-            </div>
-            <div class="row">
-              <div class="k">Official Email</div>
-              <div class="v"><a href="mailto:info@te-enah.com">info@te-enah.com</a></div>
-            </div>
-            <div class="row">
-              <div class="k">Logo (SVG)</div>
-              <div class="v">
-                <a href="https://raw.githubusercontent.com/elyonthoren/te-enah/main/teenah-icon-32.svg" target="_blank" rel="noopener">
-                  raw.githubusercontent.com/.../teenah-icon-32.svg
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="sep"></div>
-
-          <p class="small">
-            Make sure all links open without login (public). This improves approval success for explorer token updates.
-          </p>
-        </section>
-
-        <section class="card" id="contact" style="margin-top:16px">
-          <h2>Contact</h2>
-          <p>
-            For official communications, token information updates, or verification questions:
-          </p>
-          <div class="row">
-            <div class="k">Project Email</div>
-            <div class="v"><a href="mailto:info@te-enah.com" style="color:rgba(255,255,255,.92); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35)">info@te-enah.com</a></div>
-          </div>
-          <p class="small" style="margin-top:10px">
-            Please include the contract address in your message to avoid confusion.
-          </p>
-        </section>
-      </aside>
+<header>
+  <div class="brand">
+    <div class="logo">
+      <!-- Simple readable logo -->
+      <svg viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="28" stroke="#f7d67b" stroke-width="3" fill="none"/>
+        <path d="M32 16v32M22 26h20" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      </svg>
     </div>
-
-    <div class="footer">
-      <div>© <span id="y"></span> Te·enah — Built for clarity and transparency.</div>
-      <div class="small" style="margin-top:8px">
-        Disclaimer: Te·enah is a symbolic/values-based token. Nothing on this website constitutes financial advice.
-      </div>
+    <div>
+      <h1>Te·enah (T)</h1>
+      <p>A symbolic digital asset on <b>BNB Smart Chain</b>, centered on gratitude as a principle of remembrance and abundance.</p>
     </div>
   </div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <nav>
+    <a href="#token">Token Info</a>
+    <a href="#links">Links</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <b>Gratitude • Abundance • Remembrance</b>
+  <div class="badges">
+    <span><b>Network:</b> BNB Smart Chain</span>
+    <span><b>Symbol:</b> T</span>
+    <span><b>Purpose:</b> Values-based token</span>
+    <span><b>Official Contact:</b> info@te-enah.com</span>
+  </div>
+  <p>This website provides neutral, verifiable information for explorers, exchanges, and token listing reviews.</p>
+</section>
+
+<div class="grid">
+
+<section class="card">
+  <h2>Project Overview</h2>
+  <p>Te·enah (T) is a symbolic digital asset designed to represent gratitude as a daily practice and a principle of remembrance and abundance. The project is intentionally simple and focuses on meaning, reflection, and community values.</p>
+
+  <h2>Utility & Scope</h2>
+  <p>The token is intended for basic on-chain functionality such as holding and transferring. Any future extensions will be publicly documented.</p>
+
+  <div class="warn">
+    <b>Disclaimer:</b> Te·enah is not presented as a guaranteed profit vehicle and does not constitute financial advice.
+  </div>
+</section>
+
+<aside class="card" id="token">
+  <h2>Token Information</h2>
+
+  <div class="row"><div class="key">Name</div><div class="val">Te·enah</div></div>
+  <div class="row"><div class="key">Symbol</div><div class="val">T</div></div>
+  <div class="row"><div class="key">Network</div><div class="val">BNB Smart Chain</div></div>
+  <div class="row"><div class="key">Decimals</div><div class="val">18</div></div>
+  <div class="row"><div class="key">Total Supply</div><div class="val">36,000,000</div></div>
+  <div class="row"><div class="key">Contract</div><div class="val">0xA62acafA8e5a67247c751581bfF2a62f78645445</div></div>
+</aside>
+
+</div>
+
+<section class="card" id="links" style="margin-top:16px">
+  <h2>Official Links</h2>
+  <p>Website: <a href="https://te-enah.com">https://te-enah.com</a></p>
+  <p>Email: <a href="mailto:info@te-enah.com">info@te-enah.com</a></p>
+  <p>Logo (SVG): <a href="https://raw.githubusercontent.com/elyonthoren/te-enah/main/teenah-icon-32.svg">Download</a></p>
+</section>
+
+<section class="card" id="contact" style="margin-top:16px">
+  <h2>Contact</h2>
+  <p>For official inquiries and verification:</p>
+  <p><b>info@te-enah.com</b></p>
+</section>
+
+<footer>
+  © <span id="y"></span> Te·enah — All rights reserved
+</footer>
+
+</div>
+
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
