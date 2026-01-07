@@ -2,151 +2,616 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Te·enah — Gratitude · Abundance · Remembrance</title>
-  <meta name="description" content="Te·enah is a symbolic token project centered on gratitude, abundance, and remembrance of the Creator." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Te·enah (T) — Gratitude & Abundance on BNB Smart Chain</title>
+  <meta name="description" content="Te·enah (T) is a symbolic digital asset on BNB Smart Chain centered on gratitude as a principle of remembrance and abundance. Token info, links, and transparency details." />
+  <meta name="theme-color" content="#1b2a1b" />
 
   <style>
     :root{
-      --gold:#d4b46a;
-      --ivory:#f2ead8;
-      --muted:rgba(242,234,216,.82);
-      --card:rgba(0,0,0,.62);
-      --card2:rgba(0,0,0,.44);
-      --line:rgba(212,180,106,.22);
-      --radius:22px;
+      --bg:#071006;
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.60);
+      --line: rgba(255,255,255,.16);
+      --gold: #f7d67b;
+      --leaf: #47c27e;
+      --fig: #8a2be2;
+      --accent: #9fe7c7;
+      --danger: #ff5a5a;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 20px;
+      --radius2: 14px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      color:var(--ivory);
-      font-family:Georgia,"Times New Roman",serif;
-      background:
-        radial-gradient(900px 520px at 50% 15%, rgba(212,180,106,.18), transparent 60%),
-        url("data:image/jpeg;base64,REEMPLAZAR_POR_IMAGEN") center/cover no-repeat fixed;
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 70% 20%, rgba(79, 255, 170, .10), transparent 60%),
+                  radial-gradient(900px 700px at 30% 30%, rgba(255, 215, 120, .10), transparent 55%),
+                  linear-gradient(180deg, #061006 0%, #07130b 40%, #060b07 100%);
+      overflow-x:hidden;
     }
-    body::before{
-      content:"";
+
+    /* Orchard background layer */
+    .orchard{
       position:fixed;
       inset:0;
-      background:radial-gradient(1200px 700px at 50% 20%, rgba(0,0,0,.18), rgba(0,0,0,.75));
+      z-index:-2;
+      opacity:.95;
       pointer-events:none;
+      filter:saturate(1.05) contrast(1.05);
+    }
+    .orchard::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(1200px 900px at 50% 15%, rgba(0,0,0,.25), rgba(0,0,0,.45) 45%, rgba(0,0,0,.55) 100%);
+      z-index:1;
+    }
+    .orchard svg{
+      width:100%;
+      height:100%;
+      display:block;
+      position:absolute;
+      inset:0;
       z-index:0;
     }
+
+    /* Layout */
+    .wrap{
+      width:min(1100px, 92vw);
+      margin:0 auto;
+      padding:42px 0 70px;
+      position:relative;
+    }
     header{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(10px);
-      background:rgba(0,0,0,.55);
-      border-bottom:1px solid var(--line);
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      padding:20px 0 26px;
     }
-    .nav{
-      max-width:1100px;margin:0 auto;
-      padding:12px 16px;
-      display:flex;justify-content:space-between;align-items:center;
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
     }
-    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ivory);font-weight:700}
-    .dot{width:9px;height:9px;border-radius:50%;background:var(--gold)}
-    nav a{
-      color:var(--muted);text-decoration:none;
-      letter-spacing:3px;font-size:12px;text-transform:uppercase;
+    .mark{
+      width:56px;
+      height:56px;
+      border-radius:18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      display:grid;
+      place-items:center;
+      backdrop-filter: blur(10px);
+    }
+    .mark svg{width:40px;height:40px}
+    .title h1{
+      margin:0;
+      font-size: clamp(26px, 3.2vw, 40px);
+      letter-spacing: .2px;
+      line-height:1.05;
+    }
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width: 62ch;
+      line-height:1.55;
+    }
+
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:650;
+      letter-spacing:.2px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      backdrop-filter: blur(10px);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.14);
+      border-color: rgba(255,255,255,.28);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(159,231,199,.22), rgba(255,214,123,.18));
+      border-color: rgba(255,255,255,.24);
+    }
+    .btn svg{width:18px;height:18px;opacity:.9}
+
+    .grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      padding:18px 18px 16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(500px 200px at 20% 0%, rgba(159,231,199,.18), transparent 60%),
+                  radial-gradient(500px 200px at 80% 0%, rgba(255,214,123,.12), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
+    .card h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:.3px;
+    }
+    .card p, .card li{
+      color:var(--muted);
+      line-height:1.6;
+      margin:0 0 10px;
+    }
+    .small{
+      font-size: 13.5px;
+      color: var(--muted2);
+      line-height:1.55;
+    }
+    .sep{
+      height:1px;
+      background: var(--line);
+      margin:14px 0;
+    }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap:12px;
+      padding:10px 12px;
+      border-radius: var(--radius2);
+      background: rgba(0,0,0,.18);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    @media (max-width: 520px){
+      .row{grid-template-columns: 1fr}
+    }
+    .k{
+      color: rgba(255,255,255,.82);
+      font-weight:700;
+    }
+    .v{
+      color: rgba(255,255,255,.86);
+      word-break: break-word;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13.5px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.20);
+      color: rgba(255,255,255,.86);
+      font-weight:650;
+      font-size:13px;
+      margin:6px 8px 0 0;
     }
-    main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:26px 16px 70px}
-    .hero{text-align:center}
-    .hero h1{font-size:clamp(38px,5.6vw,72px);margin:10px 0}
-    .hero .sub{color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-size:14px}
-    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:20px}
-    .card{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--radius)}
-    .pad{padding:18px}
-    h2{color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin:0 0 10px;font-size:30px}
-    p{font-size:18px;line-height:1.5}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .chip{border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:12px;text-transform:uppercase}
-    .quote{border-left:5px solid var(--gold);padding:14px;background:rgba(0,0,0,.25);border-radius:18px}
-    .adapted{border-left-color:#2bd48f}
-    .grat{color:red;text-decoration:underline;font-weight:700}
-    .pill{border:1px solid var(--line);border-radius:999px;padding:10px 14px;font-family:monospace}
-    footer{text-align:center;margin-top:20px;color:rgba(242,234,216,.7)}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}nav{display:none}}
+    .pill b{color:var(--gold)}
+    .warn{
+      border:1px solid rgba(255,90,90,.35);
+      background: rgba(255,90,90,.08);
+      padding:12px 12px;
+      border-radius: 14px;
+      color: rgba(255,255,255,.86);
+    }
+    .warn strong{color:#ffd1d1}
+    .links a{
+      color: rgba(255,255,255,.92);
+      text-decoration:none;
+      border-bottom: 1px dashed rgba(255,255,255,.35);
+    }
+    .links a:hover{
+      border-bottom-color: rgba(255,255,255,.85);
+    }
+
+    .footer{
+      margin-top:18px;
+      padding:18px 0 0;
+      color: rgba(255,255,255,.60);
+      font-size: 12.5px;
+      line-height:1.6;
+      text-align:center;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.18);
+      margin-top: 10px;
+      backdrop-filter: blur(10px);
+    }
+    .badge svg{width:18px;height:18px;opacity:.9}
   </style>
 </head>
 
 <body>
-<header>
-  <div class="nav">
-    <a class="brand"><span class="dot"></span>TE·ENAH</a>
-    <nav>
-      <a href="#about">ABOUT</a>
-      <a href="#token">TOKEN</a>
-      <a href="#thanks">THANKS</a>
-      <a href="#words">WORDS</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+  <!-- ORCHARD BACKGROUND (inline SVG) -->
+  <div class="orchard" aria-hidden="true">
+    <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2b7a5c"/>
+          <stop offset="0.45" stop-color="#1f5f46"/>
+          <stop offset="1" stop-color="#0b1f14"/>
+        </linearGradient>
+
+        <radialGradient id="sun" cx="35%" cy="22%" r="40%">
+          <stop offset="0" stop-color="#ffe9b8" stop-opacity="0.95"/>
+          <stop offset="0.35" stop-color="#ffd67b" stop-opacity="0.55"/>
+          <stop offset="1" stop-color="#ffd67b" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1f5b34"/>
+          <stop offset="0.55" stop-color="#144026"/>
+          <stop offset="1" stop-color="#0a2416"/>
+        </linearGradient>
+
+        <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#4a2b1b"/>
+          <stop offset="1" stop-color="#2c160e"/>
+        </linearGradient>
+
+        <radialGradient id="leaf" cx="40%" cy="35%" r="70%">
+          <stop offset="0" stop-color="#79f1a7" stop-opacity="0.95"/>
+          <stop offset="0.55" stop-color="#3cc97f" stop-opacity="0.92"/>
+          <stop offset="1" stop-color="#1c6b44" stop-opacity="0.95"/>
+        </radialGradient>
+
+        <radialGradient id="leaf2" cx="55%" cy="25%" r="80%">
+          <stop offset="0" stop-color="#b7ffda" stop-opacity="0.75"/>
+          <stop offset="0.55" stop-color="#4ddf9a" stop-opacity="0.70"/>
+          <stop offset="1" stop-color="#1a6a43" stop-opacity="0.85"/>
+        </radialGradient>
+
+        <radialGradient id="fig" cx="35%" cy="30%" r="80%">
+          <stop offset="0" stop-color="#f2d5ff" stop-opacity="0.95"/>
+          <stop offset="0.45" stop-color="#b46cff" stop-opacity="0.95"/>
+          <stop offset="1" stop-color="#5b1aa6" stop-opacity="0.95"/>
+        </radialGradient>
+
+        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+
+        <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.35"/>
+        </filter>
+
+        <!-- Simple fig shape -->
+        <g id="figFruit">
+          <path d="M0,-18 C10,-26 18,-12 10,-2 C18,8 8,22 0,18 C-8,22 -18,8 -10,-2 C-18,-12 -10,-26 0,-18 Z" fill="url(#fig)" filter="url(#shadow)"/>
+          <circle cx="-3" cy="0" r="1.4" fill="#ffd67b" opacity="0.95"/>
+          <circle cx="3" cy="4" r="1.1" fill="#ffd67b" opacity="0.85"/>
+          <circle cx="2" cy="-4" r="1.0" fill="#ffd67b" opacity="0.80"/>
+        </g>
+
+        <!-- Leaf cluster -->
+        <g id="leafCluster">
+          <path d="M0,0 C40,-50 90,-40 110,10 C80,40 30,35 0,0 Z" fill="url(#leaf)" opacity="0.95"/>
+          <path d="M20,12 C55,-35 92,-30 105,15 C75,38 40,34 20,12 Z" fill="url(#leaf2)" opacity="0.85"/>
+        </g>
+
+        <!-- Tree -->
+        <g id="figTree">
+          <path d="M-20,170 C-10,70 -10,30 0,-30 C10,30 10,70 20,170 Z" fill="url(#trunk)" />
+          <path d="M0,-30 C-60,-10 -95,30 -120,90 C-70,80 -35,60 0,35 C35,60 70,80 120,90 C95,30 60,-10 0,-30 Z" fill="url(#trunk)" opacity="0.95"/>
+          <g transform="translate(-210,-180)">
+            <ellipse cx="210" cy="220" rx="230" ry="180" fill="url(#leaf)" filter="url(#shadow)" opacity="0.98"/>
+            <ellipse cx="160" cy="250" rx="170" ry="140" fill="url(#leaf2)" opacity="0.70"/>
+            <ellipse cx="260" cy="250" rx="170" ry="140" fill="url(#leaf2)" opacity="0.65"/>
+          </g>
+
+          <!-- Fruits sprinkled -->
+          <g opacity="0.98">
+            <g transform="translate(-120,5)"><use href="#figFruit"/></g>
+            <g transform="translate(-60,40) scale(0.95)"><use href="#figFruit"/></g>
+            <g transform="translate(10,55) scale(0.90)"><use href="#figFruit"/></g>
+            <g transform="translate(70,25) scale(1.05)"><use href="#figFruit"/></g>
+            <g transform="translate(125,60) scale(0.85)"><use href="#figFruit"/></g>
+            <g transform="translate(-140,85) scale(0.80)"><use href="#figFruit"/></g>
+            <g transform="translate(-25,95) scale(0.88)"><use href="#figFruit"/></g>
+            <g transform="translate(95,100) scale(0.78)"><use href="#figFruit"/></g>
+            <g transform="translate(35,125) scale(0.70)"><use href="#figFruit"/></g>
+          </g>
+        </g>
+      </defs>
+
+      <!-- Sky + sun -->
+      <rect width="1600" height="900" fill="url(#sky)"/>
+      <circle cx="520" cy="200" r="360" fill="url(#sun)" filter="url(#soft)"/>
+
+      <!-- Distant orchard layers -->
+      <g opacity="0.55">
+        <path d="M0,520 C250,470 430,520 650,500 C900,480 1100,520 1600,470 L1600,900 L0,900 Z" fill="#0c2d1a"/>
+        <g transform="translate(260,520) scale(0.75)"><use href="#figTree"/></g>
+        <g transform="translate(560,525) scale(0.70)"><use href="#figTree"/></g>
+        <g transform="translate(900,520) scale(0.75)"><use href="#figTree"/></g>
+        <g transform="translate(1240,530) scale(0.68)"><use href="#figTree"/></g>
+      </g>
+
+      <!-- Ground -->
+      <path d="M0,520 C220,470 460,540 710,520 C980,500 1210,560 1600,490 L1600,900 L0,900 Z" fill="url(#ground)"/>
+
+      <!-- Mid orchard -->
+      <g opacity="0.72">
+        <g transform="translate(210,610) scale(0.92)"><use href="#figTree"/></g>
+        <g transform="translate(560,640) scale(0.88)"><use href="#figTree"/></g>
+        <g transform="translate(980,620) scale(0.95)"><use href="#figTree"/></g>
+        <g transform="translate(1360,650) scale(0.86)"><use href="#figTree"/></g>
+      </g>
+
+      <!-- Foreground orchard (bigger, more colorful) -->
+      <g opacity="0.92">
+        <g transform="translate(170,760) scale(1.18)"><use href="#figTree"/></g>
+        <g transform="translate(520,790) scale(1.28)"><use href="#figTree"/></g>
+        <g transform="translate(920,770) scale(1.22)"><use href="#figTree"/></g>
+        <g transform="translate(1320,800) scale(1.34)"><use href="#figTree"/></g>
+      </g>
+
+      <!-- Add extra hanging figs across foreground for abundance feel -->
+      <g opacity="0.95">
+        <g transform="translate(300,640) scale(0.9)"><use href="#figFruit"/></g>
+        <g transform="translate(360,680) scale(0.8)"><use href="#figFruit"/></g>
+        <g transform="translate(720,660) scale(0.95)"><use href="#figFruit"/></g>
+        <g transform="translate(760,700) scale(0.75)"><use href="#figFruit"/></g>
+        <g transform="translate(1100,650) scale(0.9)"><use href="#figFruit"/></g>
+        <g transform="translate(1160,690) scale(0.78)"><use href="#figFruit"/></g>
+        <g transform="translate(1420,640) scale(0.9)"><use href="#figFruit"/></g>
+        <g transform="translate(1480,690) scale(0.75)"><use href="#figFruit"/></g>
+      </g>
+    </svg>
   </div>
-</header>
 
-<main>
-  <section class="hero">
-    <h1>Welcome to Te·enah</h1>
-    <div class="sub">Gratitude · Abundance · Remembrance</div>
-  </section>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true">
+          <!-- simple emblem: star + fig + T -->
+          <svg viewBox="0 0 64 64" fill="none">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#9fe7c7" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#ffd67b" stop-opacity="0.90"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="28" stroke="url(#g1)" stroke-width="2.6" opacity="0.9"/>
+            <path d="M32 9 L36 22 L49 22 L38.5 30 L42.5 43 L32 35.5 L21.5 43 L25.5 30 L15 22 L28 22 Z"
+                  fill="url(#g1)" opacity="0.28"/>
+            <path d="M32 22 C40 16 46 28 38 32 C44 38 36 48 32 44 C28 48 20 38 26 32 C18 28 24 16 32 22 Z"
+                  fill="rgba(180,108,255,.85)"/>
+            <path d="M25 25 H39" stroke="rgba(255,255,255,.55)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M32 26 V44" stroke="rgba(255,255,255,.80)" stroke-width="3.2" stroke-linecap="round"/>
+            <path d="M25 26 H39" stroke="rgba(255,255,255,.80)" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
 
-  <section class="grid" id="about">
-    <div class="card">
-      <div class="pad">
-        <h2>About</h2>
-        <p><b>Te·enah</b> is a symbolic token centered on <b>gratitude</b>, the spiritual key that multiplies what we receive.</p>
-        <p>This website does not promise financial returns. Its purpose is remembrance and honoring the Creator.</p>
-
-        <div class="chips" id="token">
-          <div class="chip">Supply: 36,000,000</div>
-          <div class="chip">Symbol: T</div>
-          <div class="chip">Decimals: 18</div>
-          <div class="chip">Network: BNB Smart Chain</div>
+        <div class="title">
+          <h1>Te·enah <span style="color:var(--gold)">(T)</span></h1>
+          <p>
+            A symbolic digital asset on <b>BNB Smart Chain</b>, centered on <b>gratitude</b> as a principle of remembrance and abundance.
+            This website provides clear project information, token details, links, and transparency notes.
+          </p>
+          <div>
+            <span class="pill"><b>Network</b> BNB Smart Chain</span>
+            <span class="pill"><b>Symbol</b> T</span>
+            <span class="pill"><b>Purpose</b> Gratitude & Abundance</span>
+          </div>
         </div>
       </div>
+
+      <div class="cta">
+        <a class="btn primary" href="#token-info">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l3 6 6 .9-4.5 4.4 1.1 6.2L12 17.9 6.4 20.5l1.1-6.2L3 9.9 9 9l3-6z" stroke="currentColor" stroke-width="1.8"/></svg>
+          Token Info
+        </a>
+        <a class="btn" href="#links">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.1 0l1.9-1.9a5 5 0 0 0-7.1-7.1L10.9 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 11a5 5 0 0 0-7.1 0L5 12.9A5 5 0 0 0 12.1 20L13 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Links
+        </a>
+        <a class="btn" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Contact
+        </a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- LEFT: Project / About -->
+      <section class="card" id="about">
+        <h2>Project Overview</h2>
+        <p>
+          <b>Te·enah (T)</b> is a symbolic digital asset designed to represent <b>gratitude</b> as a daily practice and a principle of
+          remembrance and abundance. The project is intentionally simple: it focuses on meaning, reflection, and community values.
+        </p>
+
+        <div class="sep"></div>
+
+        <h2>Utility & Scope</h2>
+        <p>
+          Te·enah is intended for basic token functions such as holding and transferring on-chain.
+          Any future integrations (e.g., community rewards, website features, or optional extensions) will be publicly documented.
+        </p>
+        <ul>
+          <li><b>Current scope:</b> standard transfers and basic token ownership on BNB Smart Chain.</li>
+          <li><b>No hidden features:</b> no taxes, no automatic rewards, and no forced staking mechanisms.</li>
+          <li><b>Transparency-first:</b> clear token details and official links are provided below.</li>
+        </ul>
+
+        <div class="sep"></div>
+
+        <h2>Transparency & Security Notes</h2>
+        <div class="warn">
+          <strong>Important:</strong> Te·enah is a symbolic/values-based project and is not presented as a guaranteed profit vehicle.
+          Always do your own research and only use funds you can afford to lose.
+        </div>
+        <p class="small" style="margin-top:10px">
+          This page is provided to help explorers and users verify basic information, links, and project intent.
+        </p>
+      </section>
+
+      <!-- RIGHT: Token info, links, contact -->
+      <aside>
+        <section class="card" id="token-info">
+          <h2>Token Information</h2>
+
+          <!-- EDIT THESE VALUES IF NEEDED -->
+          <div class="kv" aria-label="Token key value list">
+            <div class="row">
+              <div class="k">Token Name</div>
+              <div class="v">Te·enah</div>
+            </div>
+            <div class="row">
+              <div class="k">Symbol</div>
+              <div class="v">T</div>
+            </div>
+            <div class="row">
+              <div class="k">Network</div>
+              <div class="v">BNB Smart Chain (BSC)</div>
+            </div>
+            <div class="row">
+              <div class="k">Decimals</div>
+              <div class="v">18</div>
+            </div>
+            <div class="row">
+              <div class="k">Total Supply</div>
+              <div class="v">36,000,000</div>
+            </div>
+            <div class="row">
+              <div class="k">Contract</div>
+              <div class="v">0xA62acafA8e5a67247c751581bfF2a62f78645445</div>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+
+          <h2>Disclosure (for clarity)</h2>
+          <ul>
+            <li><b>No investment advice:</b> this project does not provide financial advice.</li>
+            <li><b>No guaranteed returns:</b> token value can go up or down.</li>
+            <li><b>No promises:</b> no fixed roadmap or profit commitments are implied.</li>
+          </ul>
+          <p class="small">
+            If you are reviewing this token via an explorer, use the contract address above and official links below.
+          </p>
+        </section>
+
+        <section class="card links" id="links" style="margin-top:16px">
+          <h2>Official Links</h2>
+          <p class="small">These are the official references for the Te·enah project.</p>
+
+          <!-- Keep links consistent: always use https when possible -->
+          <div class="kv">
+            <div class="row">
+              <div class="k">Website</div>
+              <div class="v"><a href="https://te-enah.com" target="_blank" rel="noopener">https://te-enah.com</a></div>
+            </div>
+            <div class="row">
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:elyonthoren@proton.me">elyonthoren@proton.me</a></div>
+            </div>
+            <div class="row">
+              <div class="k">Logo (SVG)</div>
+              <div class="v">
+                <a href="https://raw.githubusercontent.com/elyonthoren/te-enah/main/teenah-icon-32.svg" target="_blank" rel="noopener">
+                  raw.githubusercontent.com/.../teenah-icon-32.svg
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="badge" aria-label="Project values badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 6.6-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <div>
+              <div style="font-weight:800; color:rgba(255,255,255,.90)">Core Message</div>
+              <div class="small" style="margin:2px 0 0">
+                Gratitude as remembrance, abundance as fruit.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="contact" style="margin-top:16px">
+          <h2>Contact</h2>
+          <p>
+            For official communications, token information updates, or verification questions:
+          </p>
+          <div class="row">
+            <div class="k">Project Email</div>
+            <div class="v"><a href="mailto:elyonthoren@proton.me" style="color:rgba(255,255,255,.92); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,.35)">elyonthoren@proton.me</a></div>
+          </div>
+          <p class="small" style="margin-top:10px">
+            Please include the contract address in your message to avoid confusion.
+          </p>
+        </section>
+      </aside>
     </div>
 
-    <div class="card">
-      <div class="pad">
-        <h2>Contact (BSC)</h2>
-        <div class="pill">elyonthoren@proton.me</div>
+    <div class="footer">
+      <div>
+        © <span id="y"></span> Te·enah — Built for clarity and transparency.
+      </div>
+      <div class="small" style="margin-top:8px">
+        Disclaimer: Te·enah is a symbolic/values-based token. Nothing on this website constitutes financial advice.
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="card" id="thanks" style="margin-top:16px">
-    <div class="pad">
-      <h2>Thanks</h2>
-      <div class="quote">
-        <p>Thank You, Father, for life and for Your creation.</p>
-        <p>Thank You for the family You have given me.</p>
-        <p>Thank You for every trial overcome and every lesson learned.</p>
-        <p><b>For I live in You, and You live in me.</b></p>
-        <p><em>Infinite thanks.</em></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="card" id="words" style="margin-top:16px">
-    <div class="pad">
-      <h2>Words</h2>
-      <div class="quote">
-        “For whoever has, to him more will be given…”
-        <div>— Matthew 25:29</div>
-      </div>
-      <br>
-      <div class="quote adapted">
-        “For the one who has <span class="grat">GRATITUDE</span>, more will be given…”
-        <div>— Matthew 25:29 (adapted)</div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    © 2025 Te·enah — Gratitude · Abundance · Remembrance
-  </footer>
-</main>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
